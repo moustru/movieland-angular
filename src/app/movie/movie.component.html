@@ -1,0 +1,8 @@
+<div class="movie">
+  <div class="movie-img">
+    <img [src]="'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + movie.poster_path"/>
+  </div>
+  <span class="movie-title title">{{ movie.title }}</span>
+  <span class="movie-rate">Оценка: {{ movie.vote_average }}</span>
+  <span class="movie-pop">Популярность: {{ movie.popularity }}</span>
+</div>

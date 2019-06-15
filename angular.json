@@ -25,7 +25,8 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/static"
             ],
             "styles": [
               "src/styles.scss"
@@ -88,7 +89,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/config.scss"
             ],
             "scripts": []
           }

@@ -1,0 +1,29 @@
+<div class="bar">
+  <div class="bar-header">
+    <div class="bar-img">
+      <img [src]="'https://image.tmdb.org/t/p/w370_and_h556_bestv2/' + bar.poster_path" alt="#">
+    </div>
+    <div class="bar-info">
+      <span class="bar-info-title title">{{ bar.title }}</span>
+      <span class="bar-info-rate">Оценка: {{ bar.vote_average }}</span>
+      <span class="bar-info pop">Популярность: {{ bar.popularity }}</span>
+      <span class="bar-info release">Дата выхода: {{ bar.release_date }}</span>
+    </div>
+  </div>
+  <div class="bar-body">
+    <h3 class="bar-title title">Описание</h3>
+    <p class="bar-body-desc">{{ bar.overview }}</p>
+  </div>
+  <div class="bar-footer">
+    <h3 class="bar-title title">Трейлер</h3>
+    <div class="bar-trailer">
+        <iframe width="560" 
+                height="315" 
+                [src]="bar.video.changingThisBreaksApplicationSecurity" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                *ngIf="bar.video">
+        </iframe>
+    </div>
+  </div>
+</div>

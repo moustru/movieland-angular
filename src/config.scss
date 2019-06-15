@@ -1,0 +1,16 @@
+// vars
+
+$gray: #b5b5b5;
+$purple: #c32c55;
+$purple-hover: #981c3e;
+$blue: #94aef9;
+$transition: all .2s ease;
+
+// mixins
+
+@mixin Flex($justify-content: flex-start, $align-items: flex-start, $flex-direction: row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
