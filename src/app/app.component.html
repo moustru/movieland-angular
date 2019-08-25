@@ -1,15 +1,1 @@
-<div class="main">
-  <div class="main-header">
-    <h1 class="main-header-title title">Movieland</h1>
-    <input type="text" class="main-header-search" placeholder="Поиск по названию">
-  </div>
-  <div class="main-movies">
-    <movie *ngFor="let movie of movieList.movies; let i = index"
-           [movie]="movie"
-           (click)="showInfo(movie.id)"
-           class="movie-block">
-    </movie>
-  </div>
-  <bar class="bar" [bar]="relatedMovie" *ngIf="elements.bar"></bar>
-  <div class="overlay" *ngIf="elements.overlay" (click)="hideInfo()"></div>
-</div>
+<router-outlet></router-outlet>

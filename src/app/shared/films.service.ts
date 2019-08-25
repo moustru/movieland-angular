@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
 
 export interface Movie {
     id: number,
@@ -20,24 +18,26 @@ export class MovieList {
     private movies: Movie[] = []
     private video: string = ''
 
-    constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+    constructor(private http: HttpClient) {}
 
-    getFilms(): Observable<Movie[]> {
+    getFilms() {
         return this.http.get(`${ MAIN_URL }&sort_by=popularity.desc&api_key=${ API_KEY }&language=ru-RU&region=RU`)
-                        .subscribe(res => { this.movies = res.results})
+                        .subscribe((res: any) => { this.movies = res.results})
     }
 
-    // getVideo(param: string): Observable<Movie[]> {
-    //     return this.http.get(`https://api.themoviedb.org/3/movie/${ param }/videos?api_key=${ API_KEY }&language=ru-RU&region=RU`)
-    //                     .subscribe(res => {
-    //                         this.movies.forEach(a => { 
-    //                             a.video = this.sanitizer.bypassSecurityTrustUrl(`https://www.youtube.com/embed/${res.results[0].id}`)
-    //                         })
-    //                     })
-    // }
+    getVideo(param: string) {
+        return this.http.get(`https://api.themoviedb.org/3/movie/${ param }/videos?api_key=${ API_KEY }&language=ru-RU&region=RU`)
+                        .subscribe((res: any) => {
+                            this.video = res.results[0].id
+                        })
+    }
 
-    showInfo(id: number) {
-        const relatedMovie = this.movies.find((i => i.id === id))
+    getVideoData() {
+        return this.video;
+    }
+
+    async relateMovie(id: number) {
+        let relatedMovie = await this.movies.find((i => i.id === id))
         return relatedMovie
     }
 }

@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="main-header">
+    <h1 class="main-header-title title">Movieland</h1>
+    <input [(ngModel)]="searchString"
+           type="text" 
+           class="main-header-search" 
+           placeholder="Поиск по названию"/>
+  </div>
+  <div class="main-movies" *ngIf="movieList.movies.length; else noMovies">
+    <movie *ngFor="let movie of movieList.movies | searchFilm: searchString; let i = index"
+           (click)="changeMovie(movie.id)"
+           [movie]="movie"
+           class="movie-block">
+    </movie>
+  </div>
+</div>
+
+<ng-template #noMovies>
+  <p>По заданным критериям фильмов не найдено</p>
+</ng-template>
