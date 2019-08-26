@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="movieList.movies.length; else noMovies">
   <div class="main-header">
     <h1 class="main-header-title title">Movieland</h1>
     <input [(ngModel)]="searchString"
@@ -6,7 +6,7 @@
            class="main-header-search" 
            placeholder="Поиск по названию"/>
   </div>
-  <div class="main-movies" *ngIf="movieList.movies.length; else noMovies">
+  <div class="main-movies">
     <movie *ngFor="let movie of movieList.movies | searchFilm: searchString; let i = index"
            (click)="changeMovie(movie.id)"
            [movie]="movie"
@@ -16,5 +16,7 @@
 </div>
 
 <ng-template #noMovies>
-  <p>По заданным критериям фильмов не найдено</p>
+  <div class="loader">
+    <img src="/static/img/loading.svg"/>
+  </div>
 </ng-template>
